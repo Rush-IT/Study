@@ -28,17 +28,17 @@ namespace ДискМатЛБ_1
         {
             bool flag = false;
             Console.Write("{ ");
-            foreach(int c in a)
+            foreach (int c in a)
             {
                 if (flag) Console.Write(", ");
                 else flag = true;
                 Console.Write(c);
             }
-            Console.Write(" }");
+            Console.WriteLine(" }");
         }
         static void Main(string[] args)
         {
-            
+
             int numMenu;
             do
             {
@@ -46,12 +46,14 @@ namespace ДискМатЛБ_1
                 List<int> b = new List<int>();
                 List<int> set = new List<int>();
                 bool flag;
+                Console.WriteLine("--------------------------------------");
                 Console.WriteLine("Выберете номер действия над множеством");
                 Console.WriteLine("1.Объединение\n" +
                                   "2.Пересечение\n" +
                                   "3.Разность\n" +
                                   "4.Симметрическая разность\n" +
                                   "0.Выход");
+                Console.WriteLine("--------------------------------------");
                 do // Выбор действия
                 {
                     Console.Write("Номер: ");
@@ -80,8 +82,7 @@ namespace ДискМатЛБ_1
                 switch (numMenu)
                 {
                     case 1: // Объединение множеств
-                        set.AddRange(a);
-                        set.AddRange(b);
+                        set = a.Union(b).ToList();
                         Print(set);
                         break;
                     case 2: // Пересечение множеств
@@ -99,6 +100,12 @@ namespace ДискМатЛБ_1
                         set.AddRange(b.Except(a).ToList());
                         Print(set);
                         break;
+                }
+                if(numMenu != 0)
+                {
+                    Console.WriteLine(">>>Нажмте любую клавишу для продожения<<<");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
             } while (numMenu != 0);
         }
