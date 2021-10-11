@@ -4,13 +4,14 @@ namespace ЛБ_5
 {
     class Program
     {
+            //Главное Меню
         static int Menu()
         {
             bool flag;
             int numMenu;
-            Console.WriteLine("1.Работа с одномерными массивами\t" +
-                              "2.Работа с двумерными массивами\t" +
-                              "3.Работа с рваными массивами\t" +
+            Console.WriteLine("1.Работа с одномерными массивами\n" +
+                              "2.Работа с двумерными массивами\n" +
+                              "3.Работа с рваными массивами\n" +
                               "4.Выход");
             do
             {
@@ -19,15 +20,20 @@ namespace ЛБ_5
                 if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
                 if (numMenu > 4 && numMenu < 1) Console.WriteLine("Ошибка! Введите действие из списка!");
             } while (!flag);
+            if (numMenu != 4)
+            {
+                Console.Clear();
+            }
             return numMenu;
         }
+            //Меню одномерного массива
         static int OneArrMenu()
         {
             int numMenu;
             bool flag;
-            Console.WriteLine("1.Создать массив\t" +
-                              "2.Напечатать массив\t" +
-                              "3.Добавить K элементов в массив\t" +
+            Console.WriteLine("1.Создать массив\n" +
+                              "2.Напечатать массив\n" +
+                              "3.Добавить K элементов в массив\n" +
                               "4.Назад");
             do
             {
@@ -36,30 +42,124 @@ namespace ЛБ_5
                 if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
                 if (numMenu > 4 && numMenu < 1) Console.WriteLine("Ошибка! Введите действие из списка!");
             } while (!flag);
+            Console.Clear();
             return numMenu;
         }
-        static void CreateArr(int[] arr)
+            //Меню создания
+        static int CreateMenu()
+        {
+            bool flag;
+            int numCreate;
+            Console.WriteLine("Выберете тип создания массива\n" +
+                              "1. Ручной\n" +
+                              "2. ДСЧ\n" +
+                              "3. Назад");
+            do
+            {
+                flag = int.TryParse(Console.ReadLine(), out numCreate);
+                if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных");
+            } while (!flag);
+            Console.Clear();
+            return numCreate;
+        }
+            //Работа с одномерным массивом
+        static int WorkOneArr(int[] arr)
+        {
+            int action;
+            do
+            {
+                action = OneArrMenu();
+                switch (action)
+                {
+                    case 1:
+                        arr = CreateOneArr();
+                        break;
+                    case 2:
+                        if (arr.Length > 0) PrintOneArr(arr);
+                        else Console.WriteLine("Массив пуст!");
+                        break;
+                    case 3:
+                        arr = AddOneArr(arr);
+                        break;
+                }
+                if (action != 4)
+                {
+                    Console.WriteLine("\n\t>>>Нажмте любую клавишу для продожения<<<");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+            } while (action != 4);
+
+                return 1;
+        }
+            //Создание одномерного массива
+        static int[] CreateOneArr()
         {
             
+            bool flag;//Проверка введенных данных
+            int n;    //Кол-во элементовмассива
+            do
+            {
+                Console.WriteLine("Введите кол-во элементов массива: ");
+                flag = int.TryParse(Console.ReadLine(), out n);
+                if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                if (n <= 0) Console.WriteLine("Ошибка! Введите число больше нуля!");
+            } while (!flag);
+            int[] arr = new int[n];
+            int action = CreateMenu();
+            if (action == 1) return arr; //Метод ввода ручками
+            else if (action == 2) return arr; //Метод ввода автоматически
+            Console.WriteLine("\n\t>>>Нажмте любую клавишу для продожения<<<");
+            Console.ReadKey();
+            Console.Clear();
+            return arr;
+        }
+            //Вывод одномерного массива
+        static void PrintOneArr(int[] arr)
+        {
+            Console.Write("Одномерный массив:");
+            foreach(int i in arr)
+            {
+                Console.Write(" " + i);
+            }
+            Console.WriteLine();
+        }
+            //Добавление элементов в конец массива
+        static int[] AddOneArr(int[] arr)
+        {
+            bool flag;
+            int k;
+            Console.WriteLine("Введите кол-во элементов для добавления");
+            do
+            {
+                flag = int.TryParse(Console.ReadLine(), out k);
+                if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+            } while (!flag);
+            Console.WriteLine("Введите элементы");
+            for (int i = 1; i <= k; i++)
+            {
+                Array.Resize(ref arr, arr.Length + 1);
+                do
+                {
+                    Console.Write(">>");
+                    flag = int.TryParse(Console.ReadLine(), out arr[arr.Length - 1]);
+                    if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                } while (!flag);
+                
+            }
+            return arr;
         }
         static void Main(string[] args)
         {
-            int x;
+            int arrAction;
             do
             {
-                x = Menu();
-                int arrAction;
-                switch(x)
+                arrAction = Menu();
+                switch (arrAction)
                 {
                     case 1:
-                        do
-                        {
-                            arrAction = OneArrMenu();
-                            switch(arrAction)
-                            {
-                                case 1: CreateArr(); break;
-                            }
-                        } while (arrAction != 4);
+                        int[] arrOne = new int[0];
+                        WorkOneArr(arrOne);
                         break;
                     case 2:
 
@@ -68,7 +168,7 @@ namespace ЛБ_5
 
                         break;
                 }
-            } while (x != 4);
+            } while (arrAction != 4);
         }
     }
 }
