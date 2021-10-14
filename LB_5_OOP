@@ -115,7 +115,7 @@ namespace ЛБ_5
         {
             bool flag;
             Console.WriteLine("Ввод элементов массива");
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 do
                 {
@@ -178,7 +178,7 @@ namespace ЛБ_5
             bool flag;
             Console.WriteLine("1.Создать массив\n" +
                               "2.Напечатать массив\n" +
-                              "3.Добавить K элементов в массив\n" +
+                              "3.Удаление столбцов в указанном интервале\n" +
                               "4.Назад");
             do
             {
@@ -196,7 +196,7 @@ namespace ЛБ_5
             int action;
             do
             {
-                action = OneArrMenu();
+                action = TwoArrMenu();
                 switch (action)
                 {
                     case 1:
@@ -207,7 +207,8 @@ namespace ЛБ_5
                         else Console.WriteLine("Массив пуст!");
                         break;
                     case 3:
-                        DelTwoArr(arr);
+                        if (arr.Length > 0) arr = DelTwoArr(arr);
+                        else Console.WriteLine("Создайте массив!");
                         break;
                 }
                 if (action != 4)
@@ -247,7 +248,7 @@ namespace ЛБ_5
                 }
             } while (!flag);
 
-            int[,] arr = new int[n,m];
+            int[,] arr = new int[n, m];
             int action = CreateMenu();
             if (action == 1) arr = WriteTwoArr(arr, n, m); //Метод ввода ручками
             else if (action == 2) arr = RandomTwoArr(arr, n, m); //Метод ввода автоматически
@@ -260,15 +261,15 @@ namespace ЛБ_5
             bool flag;
             for (int i = 0; i < n; i++)
             {
-                for(int j = 0; j < m; j++)
+                for (int j = 0; j < m; j++)
                 {
                     do
                     {
                         Console.Write(">>");
-                        flag = int.TryParse(Console.ReadLine(), out arr[i,j]);
+                        flag = int.TryParse(Console.ReadLine(), out arr[i, j]);
                         if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
                     } while (!flag);
-                }    
+                }
             }
             return arr;
         }
@@ -276,22 +277,22 @@ namespace ЛБ_5
         static int[,] RandomTwoArr(int[,] arr, int n, int m)
         {
             Random rand = new Random();
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
-                for(int j = 0; j < m; j++)
+                for (int j = 0; j < m; j++)
                 {
                     arr[i, j] = rand.Next() % 10;
                 }
-            }   
+            }
             return arr;
         }
         //Вывод двумерного массива
         static void PrintTwoArr(int[,] arr)
         {
             Console.WriteLine("Двумерный массив");
-            for(int i = 0; i < arr.GetUpperBound(0)+1; i++)
+            for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
             {
-                for(int j = 0; j < arr.Length/(arr.GetUpperBound(0)+1); j++)
+                for (int j = 0; j < arr.Length / (arr.GetUpperBound(0) + 1); j++)
                 {
                     Console.Write(" " + arr[i, j]);
                 }
@@ -315,26 +316,212 @@ namespace ЛБ_5
                     Console.WriteLine("Ошибка! Введите число больше нуля!");
                     flag = false;
                 }
+                else if (k1 > m)
+                {
+                    Console.WriteLine("Ошибка! Введеное значение превышает количество элементов!");
+                    flag = false;
+                }
             } while (!flag);
             Console.WriteLine("Введите конец интервала для удаления");
             do
             {
                 flag = int.TryParse(Console.ReadLine(), out k2);
                 if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                else if (k2 <= 0)
+                {
+                    Console.WriteLine("Ошибка! Введите число больше нуля!");
+                    flag = false;
+                }
                 else if (k2 > m)
                 {
                     Console.WriteLine("Ошибка! Введеное значение превышает количество элементов!");
                     flag = false;
                 }
             } while (!flag);
-            int[,] newArr = new int[n, m];
-            for(int i = 0; i < n + 1; i++)
+            int[,] newArr = new int[n, m-(k2-k1+1)];
+            for (int i = 0; i < n; i++)
             {
-                for(int j = 0; j < m; j++)
+                for (int j = 0; j < m; j++)
                 {
-                    if (j < k1) newArr[i, j] = arr[i, j];
-                    else if(j >= k1) newArr[i, j] = arr[i, j + (k2 - k1) - 1];
+                    if (j < k1-1) newArr[i, j] = arr[i, j];
+                    else if (j >= k1-1 && j<= k2-1 && j+(k2-k1+1)<m-1) newArr[i, j] = arr[i, j + (k2 - k1 + 1)];
                 }
+            }
+            arr = newArr;
+            return arr;
+        }
+        //Меню рваного массива
+        static int TornArrMenu()
+        {
+            int numMenu;
+            bool flag;
+            Console.WriteLine("1.Создать массив\n" +
+                              "2.Напечатать массив\n" +
+                              "3.Создание строки в начале массива\n" +
+                              "4.Назад");
+            do
+            {
+                Console.Write(">>");
+                flag = int.TryParse(Console.ReadLine(), out numMenu);
+                if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                if (numMenu > 4 && numMenu < 1)
+                {
+                    Console.WriteLine("Ошибка! Введите действие из списка!");
+                    flag = false;
+                }
+            } while (!flag);
+            Console.Clear();
+            return numMenu;
+        }
+        //Работа с рваным массивом
+        static void WorkTornArr(int[][] arr)
+        {
+            int action;
+            do
+            {
+                action = TornArrMenu();
+                switch (action)
+                {
+                    case 1:
+                        arr = CreateTornArr();
+                        break;
+                    case 2:
+                        if (arr.Length > 0) PrintTornArr(arr);
+                        else Console.WriteLine("Создайте массив!");
+                        break;
+                    case 3:
+                        if (arr.Length > 0) arr = AddTornArr(arr);
+                        else Console.WriteLine("Создайте массив!");
+                        break;
+                }
+                if (action != 4)
+                {
+                    Console.WriteLine("\n\t>>>Нажмте любую клавишу для продожения<<<");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+            } while (action != 4);
+        }
+        //Создание рваного массива
+        static int[][] CreateTornArr()
+        {
+            bool flag;//Проверка введенных данных
+            int n;    //Кол-во строк массива
+            int m;    //Кол-во столбцов массива
+            do
+            {
+                Console.WriteLine("Введите кол-во строк массива: ");
+                flag = int.TryParse(Console.ReadLine(), out n);
+                if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                if (n <= 0)
+                {
+                    Console.WriteLine("Ошибка! Введите число больше нуля!");
+                    flag = false;
+                }
+            } while (!flag);
+            int[][] arr = new int[n][];
+            for(int i = 0; i < n; i++)
+            {
+                do
+                {
+                    Console.Write("Введите кол-во столбцов " + (i+1) + "-й строки: ");
+                    flag = int.TryParse(Console.ReadLine(), out m);
+                    if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                    if (n <= 0)
+                    {
+                        Console.WriteLine("Ошибка! Введите число больше нуля!");
+                        flag = false;
+                    }
+                } while (!flag);
+                arr[i] = new int[m];
+            }
+            int action = CreateMenu();
+            if (action == 1) arr = WriteTornArr(arr); //Метод ввода ручками
+            else if (action == 2) arr = RandomTornArr(arr); //Метод ввода автоматически
+            PrintTornArr(arr);
+            return arr;
+        }
+        //Ввод элеметов рваного массива вручную
+        static int[][] WriteTornArr(int[][] arr)
+        {
+            bool flag;
+            for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    do
+                    {
+                        Console.Write(">>");
+                        flag = int.TryParse(Console.ReadLine(), out arr[i][j]);
+                        if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                    } while (!flag);
+                }
+            }
+            return arr;
+        }
+        //Рандомное заполнение рваного массива
+        static int[][] RandomTornArr(int[][] arr)
+        {
+            Random rand = new Random();
+
+            for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    arr[i][j] = rand.Next() % 10;
+                }
+            }
+            return arr;
+        }
+        //Вывод рваного массива
+        static void PrintTornArr(int[][] arr)
+        {
+            Console.WriteLine("Рваный массив");
+            for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    Console.Write(" " + arr[i][j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        //Добавление строки в начало рваного массива
+        static int[][] AddTornArr(int[][] arr)
+        {
+            int[][] newArr = new int[arr.Length + 1][];
+            int m;
+            bool flag;
+            do
+            {
+                Console.Write("Введите кол-во элементов в строке: ");
+                flag = int.TryParse(Console.ReadLine(), out m);
+                if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                if (m <= 0)
+                {
+                    Console.WriteLine("Ошибка! Введите число больше нуля!");
+                    flag = false;
+                }
+            } while (!flag);
+            newArr[0] = new int[m];
+            Console.WriteLine("Введите элементы добавленной строки");
+            for (int i = 0; i < m; i++)
+            {
+                do
+                {
+                    Console.Write(">>");
+                    flag = int.TryParse(Console.ReadLine(), out newArr[0][i]);
+                    if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
+                    if (m <= 0)
+                    {
+                        Console.WriteLine("Ошибка! Введите число больше нуля!");
+                        flag = false;
+                    }
+                } while (!flag);
+            }
+            for(int i = 0; i < arr.Length; i++)
+            {
+                newArr[i + 1] = arr[i];
             }
             arr = newArr;
             return arr;
@@ -357,6 +544,7 @@ namespace ЛБ_5
                         break;
                     case 3:
                         int[][] arrTorn = new int[0][];
+                        WorkTornArr(arrTorn);
                         break;
                 }
             } while (arrAction != 4);
