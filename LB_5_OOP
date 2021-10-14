@@ -79,6 +79,8 @@ namespace ЛБ_5
                         else Console.WriteLine("Массив пуст!");
                         break;
                     case 3:
+                        if (arr.Length > 0) arr = AddOneArr(arr);
+                        else Console.WriteLine("Создайте массив!");
                         arr = AddOneArr(arr);
                         break;
                 }
@@ -101,7 +103,11 @@ namespace ЛБ_5
                 Console.WriteLine("Введите кол-во элементов массива: ");
                 flag = int.TryParse(Console.ReadLine(), out n);
                 if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
-                if (n <= 0) Console.WriteLine("Ошибка! Введите число больше нуля!");
+                if (n <= 0)
+                {
+                    Console.WriteLine("Ошибка! Введите число больше нуля!");
+                    flag = false;
+                }
             } while (!flag);
             int[] arr = new int[n];
             int action = CreateMenu();
