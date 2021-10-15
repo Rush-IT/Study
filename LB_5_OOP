@@ -9,6 +9,7 @@ namespace ЛБ_5
         {
             bool flag;
             int numMenu;
+            Console.WriteLine("----------Главное меню----------");
             Console.WriteLine("1.Работа с одномерными массивами\n" +
                               "2.Работа с двумерными массивами\n" +
                               "3.Работа с рваными массивами\n" +
@@ -31,6 +32,7 @@ namespace ЛБ_5
         {
             int numMenu;
             bool flag;
+            Console.WriteLine("-------Одномерный массив-------");
             Console.WriteLine("1.Создать массив\n" +
                               "2.Напечатать массив\n" +
                               "3.Добавить K элементов в массив\n" +
@@ -72,16 +74,24 @@ namespace ЛБ_5
                 switch (action)
                 {
                     case 1:
+                        Console.WriteLine("----Создание----");
                         arr = CreateOneArr();
                         break;
                     case 2:
-                        if (arr.Length > 0) PrintOneArr(arr);
+                        if (arr.Length > 0)
+                        {
+                            Console.WriteLine("----Вывод----");
+                            PrintOneArr(arr);
+                        }
                         else Console.WriteLine("Массив пуст!");
                         break;
                     case 3:
-                        if (arr.Length > 0) arr = AddOneArr(arr);
+                        if (arr.Length > 0)
+                        {
+                            Console.WriteLine("----Добавление----");
+                            arr = AddOneArr(arr);
+                        }
                         else Console.WriteLine("Создайте массив!");
-                        arr = AddOneArr(arr);
                         break;
                 }
                 if (action != 4)
@@ -182,6 +192,7 @@ namespace ЛБ_5
         {
             int numMenu;
             bool flag;
+            Console.WriteLine("------------Двумерный массив------------");
             Console.WriteLine("1.Создать массив\n" +
                               "2.Напечатать массив\n" +
                               "3.Удаление столбцов в указанном интервале\n" +
@@ -206,14 +217,23 @@ namespace ЛБ_5
                 switch (action)
                 {
                     case 1:
+                        Console.WriteLine("----Создание----");
                         arr = CreateTwoArr();
                         break;
                     case 2:
-                        if (arr.Length > 0) PrintTwoArr(arr);
+                        if (arr.Length > 0)
+                        {
+                            Console.WriteLine("----Вывод----");
+                            PrintTwoArr(arr);
+                        }
                         else Console.WriteLine("Массив пуст!");
                         break;
                     case 3:
-                        if (arr.Length > 0) arr = DelTwoArr(arr);
+                        if (arr.Length > 0)
+                        {
+                            Console.WriteLine("----Удаление----");
+                            arr = DelTwoArr(arr);
+                        }
                         else Console.WriteLine("Создайте массив!");
                         break;
                 }
@@ -344,13 +364,13 @@ namespace ЛБ_5
                     flag = false;
                 }
             } while (!flag);
-            int[,] newArr = new int[n, m-(k2-k1+1)];
+            int[,] newArr = new int[n, m - (k2 - k1 + 1)];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    if (j < k1-1) newArr[i, j] = arr[i, j];
-                    else if (j >= k1-1 && j<= k2-1 && j+(k2-k1+1)<m-1) newArr[i, j] = arr[i, j + (k2 - k1 + 1)];
+                    if (j < k1 - 1) newArr[i, j] = arr[i, j];
+                    else if (j >= k1 - 1 && j <= k2 - 1 && j + (k2 - k1 + 1) < m - 1) newArr[i, j] = arr[i, j + (k2 - k1 + 1)];
                 }
             }
             arr = newArr;
@@ -361,6 +381,7 @@ namespace ЛБ_5
         {
             int numMenu;
             bool flag;
+            Console.WriteLine("----------Рваный массив----------");
             Console.WriteLine("1.Создать массив\n" +
                               "2.Напечатать массив\n" +
                               "3.Создание строки в начале массива\n" +
@@ -389,14 +410,23 @@ namespace ЛБ_5
                 switch (action)
                 {
                     case 1:
+                        Console.WriteLine("----Создание----");
                         arr = CreateTornArr();
                         break;
                     case 2:
-                        if (arr.Length > 0) PrintTornArr(arr);
+                        if (arr.Length > 0)
+                        {
+                            Console.WriteLine("----Вывод----");
+                            PrintTornArr(arr);
+                        }
                         else Console.WriteLine("Создайте массив!");
                         break;
                     case 3:
-                        if (arr.Length > 0) arr = AddTornArr(arr);
+                        if (arr.Length > 0)
+                        {
+                            Console.WriteLine("----Добавление----");
+                            arr = AddTornArr(arr);
+                        }
                         else Console.WriteLine("Создайте массив!");
                         break;
                 }
@@ -426,11 +456,11 @@ namespace ЛБ_5
                 }
             } while (!flag);
             int[][] arr = new int[n][];
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 do
                 {
-                    Console.Write("Введите кол-во столбцов " + (i+1) + "-й строки: ");
+                    Console.Write("Введите кол-во столбцов " + (i + 1) + "-й строки: ");
                     flag = int.TryParse(Console.ReadLine(), out m);
                     if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
                     if (n <= 0)
@@ -525,7 +555,7 @@ namespace ЛБ_5
                     }
                 } while (!flag);
             }
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 newArr[i + 1] = arr[i];
             }
