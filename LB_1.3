@@ -1,0 +1,30 @@
+using System;
+
+namespace ЛБ_1._3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 10;
+            double b = 0.01;
+            double c = Math.Pow(a + b, 4);
+            double d = Math.Pow(a, 4);
+            double e = 6 * Math.Pow(a * b, 2);
+            double f = Math.Pow(b, 4);
+            double g = 4 * a * Math.Pow(b, 3);
+            double h = 4 * b * Math.Pow(a, 3);
+            bool flag;
+            double x;
+            double R;
+            do
+            {
+                Console.Write("Значение X: ");
+                flag = double.TryParse(Console.ReadLine(), out x);
+                if (!flag) Console.Write("Не верное значение!\nПопробуйте снова: ");
+            } while (!flag);
+            R = (c - (d + e + f)) / (g + h);
+            Console.WriteLine("R = " + R);
+        }
+    }
+}
