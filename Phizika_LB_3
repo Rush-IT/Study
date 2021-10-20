@@ -1,0 +1,50 @@
+using System;
+
+namespace LB_Phizika
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int test = 5;
+            double m1, m2, t, t2, r, a, g, k, fi;
+            double T = 0, T2 = 0, A = 0, G = 0;
+            fi = 2 * Math.PI;
+            Console.WriteLine("m1?: ");
+            m1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("m2?: ");
+            m2 = double.Parse(Console.ReadLine());
+            k = (m2 - m1) / (m2 + m1);
+            Console.WriteLine("k = " + k);
+            Console.WriteLine("r?: ");
+            r = double.Parse(Console.ReadLine());
+            for (int i = 0; i < test; i++)
+            {
+                Console.WriteLine("Тест " + i);
+                Console.WriteLine("t?: ");
+                t = double.Parse(Console.ReadLine());
+                t2 = Math.Pow(t, 2);
+                Console.WriteLine("t^2 = " + t2);
+                
+                
+                a = 2 * fi * r / t2;
+                Console.WriteLine("a = " + a);
+                g = ((m2 + m1) / (m2 - m1)) * a;
+                Console.WriteLine("g = " + g);
+                T += t;
+                T2 += t2;
+                A += a;
+                G += g;
+                
+            }
+            T /= test;
+            T2 /= test;
+            A /= test;
+            G /= test;
+            Console.WriteLine("T = " + T);
+            Console.WriteLine("T2 = " + T2);
+            Console.WriteLine("A = " + A);
+            Console.WriteLine("G = " + G);
+        }
+    }
+}
