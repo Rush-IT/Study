@@ -17,6 +17,7 @@ namespace ЛБ_6
             {
                 Console.Write(">>");
                 flag = int.TryParse(Console.ReadLine(), out numMenu);
+                
                 if (!flag) Console.WriteLine("Ошибка! Введите целочисленный тип данных!");
                 if (numMenu > 3 && numMenu < 1) Console.WriteLine("Ошибка! Введите действие из списка!");
             } while (!flag);
@@ -294,7 +295,7 @@ namespace ЛБ_6
                         if (str.Length > 0)
                         {
                             Console.WriteLine("----Сортировка----");
-                            str = MinWordStr(str);
+                            str = SortWordStr(str);
                         }
                         else Console.WriteLine("Создайте строку!");
                         break;
@@ -333,26 +334,8 @@ namespace ЛБ_6
             }
             return newStr;
         }
-        static string SortString(string str)
-        {
-            string newStr = "";
-            string wordStr = "";
-            foreach (char a in str)
-            {
-                if (a == '.' || a == '!' || a == '?' || a == ' ')
-                {
-                    newStr += ReversWord(wordStr);
-                    newStr += a;
-                    wordStr = "";
-                }
-                else
-                {
-                    wordStr += a;
-                }
-            }
-            return str;
-        }
-        static string MinWordStr(string str)
+        //
+        static string SortWordStr(string str)
         {
             string wordStr = "";
             int numWord = NumWordString(str);
@@ -370,36 +353,48 @@ namespace ЛБ_6
                 }
                 else
                 {
-                    wordStr += a;
+                    if (a != ' ') wordStr += a;
                 }
             }
             int index;
             string newStr = "";
-            foreach(char a in str)
+            bool flag = false;
+            foreach (char a in str)
             {
+                if (a != ' ' && flag)
+                {
+                    //newStr += ' ';
+                    flag = false;
+                }
                 if ((a == '.' || a == '!' || a == '?' || a == ' ') && wordStr!="")
                 {
                     index = minIndexWord(numLetter);
-                    numLetter[index] = 100000;
+                    numLetter[index] = 0;
                     newStr += arrStr[index];
-                    newStr += a;
-                    if (a != ' ') newStr += " ";
+                    if (a == '.' || a == '!' || a == '?')
+                    {
+                        newStr += a;
+                        newStr += ' ';
+                        flag = true;
+                    }
+                    else newStr += a;
                     wordStr = "";
                 }
                 else
                 {
                     wordStr += a;
-                }
+                }   
             }
             return newStr;
         }
+        //Поиск индекса минимальной строки
         static int minIndexWord(int[] arr)
         {
             int min = arr[0];
             int i_min = 0;
             for(int i = 0; i < arr.Length; i++)
             {
-                if(min>arr[i])
+                if(min<arr[i])
                 {
                     min = arr[i];
                     i_min = i;
@@ -416,29 +411,24 @@ namespace ЛБ_6
                 Console.WriteLine("Введите текст");
                 str = Console.ReadLine();
             } while (!CheckText(str));
-            
+            str += " ";
             return str;
         }
+        //Проверка текста
         static bool CheckText(string str)
         {
-            bool fToOffer = true;
-            bool fToWord  = true;
+            if (str == "") return false;
+            char word = ' ';
             foreach(char a in str)
             {
-                if(a != ' ')
+                if (word == '.' || word == '!' || word == '?')
                 {
-                    if (a == '.' || a == '!' || a == '?')
-                    {
-                        if (!fToOffer) return false;
-                        fToOffer = false;
-                    }
-                    else fToOffer = true;
-                    fToWord = true;
+                    if (a != ' ') return false;
+                    else word = ' ';
                 }
-                else
+                if (a == '.' || a == '!' || a == '?')
                 {
-                    if (!fToWord) return false;
-                    fToWord = false;
+                    word = a;
                 }
             }
             return true;
