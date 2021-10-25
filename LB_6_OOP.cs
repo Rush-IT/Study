@@ -32,7 +32,7 @@ namespace ЛБ_6
             Console.WriteLine("------------Двумерный массив------------");
             Console.WriteLine("1.Создать массив\n" +
                               "2.Напечатать массив\n" +
-                              "3.Удаление первого столбца\n" +
+                              "3.Удаление первого столбца, если в столбце есть минимальный элемент\n" +
                               "4.Назад");
             do
             {
@@ -321,7 +321,7 @@ namespace ЛБ_6
             string wordStr = "";
             foreach(char a in str)
             {
-                if (a == '.' || a == '!' || a == '?' || a == ' ')
+                if (a == '.' || a == '!' || a == '?' || a == ' ' || a == ',' || a == ';' || a == ':')
                 {
                     newStr += ReversWord(wordStr);
                     newStr += a;
@@ -344,7 +344,7 @@ namespace ЛБ_6
             int i = 0;
             foreach (char a in str)
             {
-                if ((a == '.' || a == '!' || a == '?' || a == ' ') && wordStr!="")
+                if ((a == '.' || a == '!' || a == '?' || a == ' ' || a == ',' || a == ';' || a == ':') && wordStr!="")
                 {
                     arrStr[i] = wordStr;
                     numLetter[i] = wordStr.Length;
@@ -358,32 +358,22 @@ namespace ЛБ_6
             }
             int index;
             string newStr = "";
-            bool flag = false;
             foreach (char a in str)
             {
-                if (a != ' ' && flag)
-                {
-                    //newStr += ' ';
-                    flag = false;
-                }
-                if ((a == '.' || a == '!' || a == '?' || a == ' ') && wordStr!="")
+                if ((a == '.' || a == '!' || a == '?' || a == ' ' || a == ',' || a == ';' || a == ':') && wordStr!="")
                 {
                     index = minIndexWord(numLetter);
                     numLetter[index] = 0;
                     newStr += arrStr[index];
-                    if (a == '.' || a == '!' || a == '?')
-                    {
-                        newStr += a;
-                        newStr += ' ';
-                        flag = true;
-                    }
-                    else newStr += a;
+                    newStr += a;
                     wordStr = "";
                 }
                 else
                 {
                     wordStr += a;
-                }   
+                    if (a == ' ') newStr += ' ';
+                }
+                if (a == ' ') wordStr = "";
             }
             return newStr;
         }
@@ -421,12 +411,12 @@ namespace ЛБ_6
             char word = ' ';
             foreach(char a in str)
             {
-                if (word == '.' || word == '!' || word == '?')
+                if (word == '.' || word == '!' || word == '?' || word == ',' || word == ';' || word == ':')
                 {
                     if (a != ' ') return false;
                     else word = ' ';
                 }
-                if (a == '.' || a == '!' || a == '?')
+                if (a == '.' || a == '!' || a == '?' || a == ',' || a == ';' || a == ':')
                 {
                     word = a;
                 }
