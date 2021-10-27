@@ -413,7 +413,11 @@ namespace ЛБ_6
             {
                 if (word == '.' || word == '!' || word == '?' || word == ',' || word == ';' || word == ':')
                 {
-                    if (a != ' ') return false;
+                    if (a != ' ')
+                    {
+                        Console.WriteLine("Ошибка в введенном тексте! Поставьте пробел после знака препинания!");
+                        return false;
+                    }
                     else word = ' ';
                 }
                 if (a == '.' || a == '!' || a == '?' || a == ',' || a == ';' || a == ':')
