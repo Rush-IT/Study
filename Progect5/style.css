@@ -1,0 +1,74 @@
+
+nav a {
+  text-decoration: none;
+}
+body {
+  padding: 0px;
+  max-width: 1900px;
+  margin: auto;
+}
+
+.container {
+  overflow: hidden;
+  text-shadow: -1px 1px 0px #DDF;
+  background: #113;
+  height: 100vh;
+  color: #CCE;
+}
+
+.column {
+
+  float: left;
+  height: 100vh;
+  color: #CCE;
+}
+
+.col-1 {
+  border-right: 0px solid;
+  padding-right: 15px;
+  width: 240px;
+  background: #457;
+  overflow-y: scroll;
+}
+
+.col-2 {
+  border-left: 0px solid;
+  margin-left: -1px;
+  padding-left: 20px;
+  width: 163vh;
+  background:  #457;
+  overflow-y: scroll;
+}
+
+.column p:first-child {
+  margin-top: 0;
+}
+li {
+  list-style-type: none; /* Убираем маркеры */
+}
+ul {
+  margin: 10px 0px;
+}
+.butt {
+  outline-style: auto;
+  outline: none;
+  border-radius: 3px;
+  background: #457;
+  outline-color: #457;
+  color: #CCE;
+  border: #457;
+  margin-right: 0px;
+  padding: 0px;
+  }
+.butt2 {
+  outline-style: auto;
+  border-radius: 3px;
+  background: #457;
+  outline-color: #457;
+  color: #CCE;
+}
+
+.table {
+  width: 100vh;
+  border: 1px;
+}
