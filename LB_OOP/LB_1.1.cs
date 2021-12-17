@@ -41,7 +41,7 @@ namespace ЛБ_1._1
                 Console.WriteLine("Введите значение x: ");
                 flag = double.TryParse(Console.ReadLine(), out x);
                 if (!flag) Console.WriteLine("Введено не верное значение!\nПопробуйте снова");
-                if (x == 1 || x == -1)
+                if (x == 0)
                 {
                     Console.WriteLine("Ошибка!\nПри данном занчении произойдет деление на ноль!\nПопробуйте снова");
                     flag = false;
