@@ -1,0 +1,13 @@
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\bin\Debug\netcoreapp3.1\LB_OOP_11.exe
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\bin\Debug\netcoreapp3.1\LB_OOP_11.deps.json
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\bin\Debug\netcoreapp3.1\LB_OOP_11.runtimeconfig.json
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\bin\Debug\netcoreapp3.1\LB_OOP_11.runtimeconfig.dev.json
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\bin\Debug\netcoreapp3.1\LB_OOP_11.dll
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\bin\Debug\netcoreapp3.1\LB_OOP_11.pdb
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.csprojAssemblyReference.cache
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.AssemblyInfoInputs.cache
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.AssemblyInfo.cs
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.csproj.CoreCompileInputs.cache
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.dll
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.pdb
+C:\Users\rashi\source\repos\LB_OOP_11\LB_OOP_11\obj\Debug\netcoreapp3.1\LB_OOP_11.genruntimeconfig.cache
