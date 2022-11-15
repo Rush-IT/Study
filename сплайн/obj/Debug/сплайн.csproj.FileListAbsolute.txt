@@ -1,0 +1,15 @@
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\bin\Debug\сплайн.exe.config
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\bin\Debug\сплайн.exe
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\bin\Debug\сплайн.pdb
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.csproj.AssemblyReference.cache
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\MainWindow.g.cs
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\App.g.cs
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн_MarkupCompile.cache
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн_MarkupCompile.lref
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\MainWindow.baml
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.g.resources
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.Properties.Resources.resources
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.csproj.GenerateResource.cache
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.csproj.CoreCompileInputs.cache
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.exe
+C:\Users\Rush_IT\source\repos\сплайн\сплайн\obj\Debug\сплайн.pdb
