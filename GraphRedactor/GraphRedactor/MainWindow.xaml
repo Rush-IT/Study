@@ -1,0 +1,30 @@
+﻿<Window x:Class="GraphRedactor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphRedactor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="454.678" Width="805.613">
+    <Grid>
+        <Canvas x:Name="paint" HorizontalAlignment="Left" Height="424" VerticalAlignment="Top" Width="798" MouseDown="paint_MouseDown" MouseUp="paint_MouseUp" MouseMove="paint_MouseMove" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+            <Menu x:Name="menu" Height="414" Canvas.Left="747" Canvas.Top="10" Width="51">
+                <Button x:Name="editPoint" Height="30" Width="30" RenderTransformOrigin="0.091,0.51" Click="Mode_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="png-clipart-computer-mouse-pointer-cursor-computer-icons-computer-mouse-angle-electronics.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="createLine" Height="30" Width="30" Click="Mode_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Снимок экрана 2022-11-03 212136.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="mode2D" Height="30" Width="30" Click="Mode_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Снимок экрана 2022-11-03 234306.png"/>
+                    </Button.Background>
+                </Button>
+            </Menu>
+        </Canvas>
+    </Grid>
+</Window>
