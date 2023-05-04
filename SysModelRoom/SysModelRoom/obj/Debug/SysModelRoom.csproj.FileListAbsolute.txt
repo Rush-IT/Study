@@ -1,0 +1,15 @@
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.csproj.AssemblyReference.cache
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\MainWindow.g.cs
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\App.g.cs
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom_MarkupCompile.cache
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom_MarkupCompile.lref
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\bin\Debug\SysModelRoom.exe.config
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\bin\Debug\SysModelRoom.exe
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\bin\Debug\SysModelRoom.pdb
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\MainWindow.baml
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.g.resources
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.Properties.Resources.resources
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.csproj.GenerateResource.cache
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.csproj.CoreCompileInputs.cache
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.exe
+C:\Users\Rush_IT\source\repos\SysModelRoom\SysModelRoom\obj\Debug\SysModelRoom.pdb
